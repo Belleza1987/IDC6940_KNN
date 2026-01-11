@@ -2,6 +2,8 @@
 
 Create a GitHub page for the project
 
+THIS IS A TEST LINE FROM RSTUDIO
+
 ## GitHub:
 #### 1. Create a GitHub account and Sign in
 #### 2. Go to [https://github.com/capstone4ds/capstone4ds_template](https://github.com/capstone4ds/capstone4ds_template) and fork (create a copy to your GitHub)
