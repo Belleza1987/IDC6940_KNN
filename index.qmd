@@ -1,5 +1,5 @@
 ---
-title: "Writing a great story for data science projects - Fall 2025 "
+title: "Writing a great story for data science projects - Spring 2026 "
 subtitle: "This is a Report Template Quarto"
 author: "Student Name (Advisor: Dr. Cohen)"
 date: '`r Sys.Date()`'
@@ -65,6 +65,7 @@ For Symbolic Regression [@wang2019symbolic] *This is my work and I want
 to add more work...*
 
 Cite new paper [@su2012linear]
+Classification of knee was studied here [@su2012linear]
 
 ## Methods
 
