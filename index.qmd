@@ -1,3 +1,7 @@
+#added this stuff to get it to render
+install.packages("reticulate")
+library(reticulate)
+pd <- py_install("pandas")
 ---
 title: "Writing a great story for data science projects - Spring 2026 "
 subtitle: "This is a Report Template Quarto"
