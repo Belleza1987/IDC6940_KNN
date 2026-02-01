@@ -3,9 +3,9 @@ install.packages("reticulate")
 library(reticulate)
 pd <- py_install("pandas")
 ---
-title: "Writing a great story for data science projects - Spring 2026 "
+title: "KNN Overview - Spring 2026 "
 subtitle: "This is a Report Template Quarto"
-author: "Student Name (Advisor: Dr. Cohen)"
+author: "Gloria Lowery (Advisor: Dr. Cohen)"
 date: '`r Sys.Date()`'
 format:
   html:
