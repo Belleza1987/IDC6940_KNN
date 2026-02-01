@@ -3,6 +3,7 @@ install.packages("reticulate")
 library(reticulate)
 pd <- py_install("pandas")
 ---
+theme: jekyll-theme-minimal
 title: "KNN Overview - Spring 2026 "
 subtitle: "This is a Report Template Quarto"
 author: "Gloria Lowery (Advisor: Dr. Cohen)"
