@@ -24,7 +24,8 @@ More information:
 
 ---
 ##KNN Overview - Spring 2026:
-####author: "Gloria Lowery (Advisor: Dr. Cohen)"
+
+author: "Gloria Lowery (Advisor: Dr. Cohen)"
 
 
 Slides: [slides.html](slides.html){target="_blank"} ( Go to `slides.qmd`
