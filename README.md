@@ -22,24 +22,11 @@ More information:
 - [Video1 RStudio connection to GitHub](https://www.youtube.com/watch?v=MdmnE3AnkQE)
 - [Video2 RStudio connection to GitHub](https://www.youtube.com/watch?v=jN6tvgt3GK8)
 
-theme: jekyll-theme-minimal
+
 title: "KNN Overview - Spring 2026 "
 subtitle: "This is a Report Template Quarto"
 author: "Gloria Lowery (Advisor: Dr. Cohen)"
-date: '`r Sys.Date()`'
-format:
-  html:
-    code-fold: true
-course: Capstone Projects in Data Science
-bibliography: references.bib # file contains bibtex for references
-#always_allow_html: true # this allows to get PDF with HTML features
-self-contained: true
-execute: 
-  warning: false
-  message: false
-editor: 
-  markdown: 
-    wrap: 72
+
 ---
 
 Slides: [slides.html](slides.html){target="_blank"} ( Go to `slides.qmd`
