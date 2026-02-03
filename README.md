@@ -23,9 +23,9 @@ More information:
 - [Video2 RStudio connection to GitHub](https://www.youtube.com/watch?v=jN6tvgt3GK8)
 
 
-title: "KNN Overview - Spring 2026 "
-subtitle: "This is a Report Template Quarto"
-author: "Gloria Lowery (Advisor: Dr. Cohen)"
+##KNN Overview - Spring 2026
+
+####author: "Gloria Lowery (Advisor: Dr. Cohen)"
 
 ---
 
