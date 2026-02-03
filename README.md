@@ -22,12 +22,10 @@ More information:
 - [Video1 RStudio connection to GitHub](https://www.youtube.com/watch?v=MdmnE3AnkQE)
 - [Video2 RStudio connection to GitHub](https://www.youtube.com/watch?v=jN6tvgt3GK8)
 
-
-##KNN Overview - Spring 2026
-
+---
+##KNN Overview - Spring 2026:
 ####author: "Gloria Lowery (Advisor: Dr. Cohen)"
 
----
 
 Slides: [slides.html](slides.html){target="_blank"} ( Go to `slides.qmd`
 to edit)
