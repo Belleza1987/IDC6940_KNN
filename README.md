@@ -24,23 +24,9 @@ More information:
 
 ---
 ##KNN Overview - Spring 2026:
+####author: "Gloria Lowery (Advisor: Dr. Cohen)"
 
-author: "Gloria Lowery (Advisor: Dr. Cohen)"
 
-
-Slides: [slides.html](slides.html){target="_blank"} ( Go to `slides.qmd`
-to edit)
-
-::: callout-important
-**Remember:** Your goal is to make your audience understand and care
-about your findings. By crafting a compelling story, you can effectively
-communicate the value of your data science project.
-
-Carefully read this template since it has instructions and tips to
-writing!
-
-Nice report!
-:::
 
 ## Introduction
 
