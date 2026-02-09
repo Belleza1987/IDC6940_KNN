@@ -1,7 +1,7 @@
 ---
-title: "<span style='color: #0366D6;'>KNN</span>"
+title: "<span style='color: #0366D6;'>K-Nearest Neighbors</span>"
 description: |
-  An unsupervised learning algorithm<br/><hr/>
+  A supervised learning algorithm<br/><hr/>
 author:
   - Gloria Lowery
 date: '`r Sys.Date()`'
@@ -23,12 +23,21 @@ indent: true
 [Presentation](link){.external target="_blank"}
  
 # Introduction
+
+The K-Nearest Neighbors (KNN) algorithm is one of the simplest and most intuitive supervised machine learning methods used for both classification (assigning a category) and regression (predicting a value). It requires two instances for it to achieve its goal: a distance metric and defining K. 
+ 
+## The Distance Metric
  
  
-## KNN
- 
- 
-## Etc.
+## Defining K 
+
+## Strengths 
+
+## Weaknesses 
+
+## Uses 
+
+In this paper we will apply the KNN algorithm to a data set of potential diabetic patients.  
 
 # Method
 
