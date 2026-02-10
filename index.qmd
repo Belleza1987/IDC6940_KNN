@@ -1,7 +1,7 @@
 ---
 title: "<span style='color: #0366D6;'>K-Nearest Neighbors</span>"
 description: |
-  A supervised learning algorithm<br/><hr/>
+  A non-parametric supervised learning algorithm<br/><hr/>
 author:
   - Gloria Lowery
 date: '`r Sys.Date()`'
