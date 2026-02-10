@@ -41,7 +41,8 @@ We also want to choose an odd number for k to minimize the chances of ties in cl
 - Adapatable - Adjusts to new training data since all training data is stored into memory. Because of that, it doesn't scale well. As data set grows, algorithm becomes less efficient due to increasing computational complexity, compromising overall model performance. 
 
 ## Weaknesses 
-- KNN is a "lazy algorithm" - It stores all training data and defers the computation to the time of classification, increasing memory usage and decrease/slower processing compared to other methods of classifying. 
+- KNN is a "lazy algorithm" - It stores all training data and defers the computation to the time of classification, increasing memory usage and decrease/slower processing compared to other methods of classifying. In other words, it does not build the model beforehand. It stores the data and makes predictions on demand. 
+
 - "Curse of Dimensionality" - Does not perform well with high dimensional data inputs. On a 2D xy graph it works fine but if we wanted to classify according to color, size, weight, etc. then data points become sparse in high dimensions and distance between points become too similar for KNN to find meaningful neighbors. This leads to "peaking phenomenon." 
 
 - Peaking Phenomenon - After reaching optimal number of features, any more just increases noise and increases classification errors especially when the sample size is small. Feature selection and dimensionality reduction techniques can help minimize "curse of dimensionality" but we need to be careful. 

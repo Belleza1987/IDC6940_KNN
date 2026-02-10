@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Gloria Lowery">
-<meta name="description" content="An unsupervised learning algorithm ">
+<meta name="description" content="A non-parametric supervised learning algorithm ">
 
-<title>KNN</title>
+<title>K-Nearest Neighbors</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,12 +84,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span style="color: #0366D6;">KNN</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span style="color: #0366D6;">K-Nearest Neighbors</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 <div>
   <div class="description">
-    An unsupervised learning algorithm<br>
+    A non-parametric supervised learning algorithm<br>
     <hr>
   </div>
 </div>
@@ -123,11 +123,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="link" class="external" target="_blank">Presentation</a></p>
 <section id="introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<section id="knn" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="knn"><span class="header-section-number">1.1</span> KNN</h2>
+<p>The K-Nearest Neighbors (KNN) algorithm is one of the simplest and most intuitive supervised machine learning methods used for both classification (assigning a category) and regression (predicting a value). It requires two instances for it to achieve its goal: a distance metric and defining K.</p>
+<section id="the-distance-metric" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="the-distance-metric"><span class="header-section-number">1.1</span> The Distance Metric</h2>
+<p>Measures the distance between the query points and other data points. The distance metric is calculated using Euclidean distance, Manhattan distance, or Minkowski distance. It’s visualized using Voronezh diagrams. (Insert diagram)</p>
 </section>
-<section id="etc." class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="etc."><span class="header-section-number">1.2</span> Etc.</h2>
+<section id="defining-k" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="defining-k"><span class="header-section-number">1.2</span> Defining K</h2>
+<p>K defines how many neighbors will be checked to determine the classification of a query point. For example, K=1, it will be assigned to the same class as its single nearest neighbor. Choosing K depends on the input data. For example, data with more outliers performs much better with higher k values. We also want to choose an odd number for k to minimize the chances of ties in classification.</p>
+</section>
+<section id="strengths" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="strengths"><span class="header-section-number">1.3</span> Strengths</h2>
+<ul>
+<li>Easy to implement/learn.</li>
+<li>Few hyper parameters - distance and k value.</li>
+<li>Adapatable - Adjusts to new training data since all training data is stored into memory. Because of that, it doesn’t scale well. As data set grows, algorithm becomes less efficient due to increasing computational complexity, compromising overall model performance.</li>
+</ul>
+</section>
+<section id="weaknesses" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="weaknesses"><span class="header-section-number">1.4</span> Weaknesses</h2>
+<ul>
+<li><p>KNN is a “lazy algorithm” - It stores all training data and defers the computation to the time of classification, increasing memory usage and decrease/slower processing compared to other methods of classifying. In other words, it does not build the model beforehand. It stores the data and makes predictions on demand.</p></li>
+<li><p>“Curse of Dimensionality” - Does not perform well with high dimensional data inputs. On a 2D xy graph it works fine but if we wanted to classify according to color, size, weight, etc. then data points become sparse in high dimensions and distance between points become too similar for KNN to find meaningful neighbors. This leads to “peaking phenomenon.”</p></li>
+<li><p>Peaking Phenomenon - After reaching optimal number of features, any more just increases noise and increases classification errors especially when the sample size is small. Feature selection and dimensionality reduction techniques can help minimize “curse of dimensionality” but we need to be careful.</p></li>
+<li><p>Overfitting - Low k values can overfit data. High values tend to smooth out prediction values since average values over a greater are or neighborhood.</p></li>
+</ul>
+</section>
+<section id="uses" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="uses"><span class="header-section-number">1.5</span> Uses</h2>
+<p>Use KNN for simple recommendation systems. Data free processing is most commonly used because it’s helpful for data sets with missing values because it estimates values using process called missing data imputation.</p>
+<p>Used in finance like stock market forecasting, currency exchange rate, money laundering analysis.</p>
+<p>Also used in health care. For example, risk of heart attacks and prostate cancer by calculating most likely gene expression.</p>
+<p>In this paper we will apply the KNN algorithm to a data set of potential diabetic patients.</p>
 </section>
 </section>
 <section id="method" class="level1" data-number="2">
@@ -601,9 +628,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "&lt;span style='color: #0366D6;'&gt;KNN&lt;/span&gt;"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "&lt;span style='color: #0366D6;'&gt;K-Nearest Neighbors&lt;/span&gt;"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> |</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  An unsupervised learning algorithm&lt;br/&gt;&lt;hr/&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  A non-parametric supervised learning algorithm&lt;br/&gt;&lt;hr/&gt;</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  - Gloria Lowery</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '`r Sys.Date()`'</span></span>
@@ -625,20 +652,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Presentation</span><span class="co">](link)</span>{.external target="_blank"}</span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## KNN</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## Etc.</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu"># Method</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="fu"># Analysis and Results</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="fu"># Conclusion</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>The K-Nearest Neighbors (KNN) algorithm is one of the simplest and most intuitive supervised machine learning methods used for both classification (assigning a category) and regression (predicting a value). It requires two instances for it to achieve its goal: a distance metric and defining K. </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Distance Metric</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a> Measures the distance between the query points and other data points. The distance metric is calculated using Euclidean distance, Manhattan distance, or Minkowski distance. It's visualized using Voronezh diagrams. (Insert diagram)  </span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu">## Defining K </span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>K defines how many neighbors will be checked to determine the classification of a query point. For example, K=1, it will be assigned to the same class as its single nearest neighbor. </span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>Choosing K depends on the input data. For example, data with more outliers performs much better with higher k values. </span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>We also want to choose an odd number for k to minimize the chances of ties in classification. </span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="fu">## Strengths </span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Easy to implement/learn. </span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Few hyper parameters - distance and k value. </span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Adapatable - Adjusts to new training data since all training data is stored into memory. Because of that, it doesn't scale well. As data set grows, algorithm becomes less efficient due to increasing computational complexity, compromising overall model performance. </span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## Weaknesses </span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>KNN is a "lazy algorithm" - It stores all training data and defers the computation to the time of classification, increasing memory usage and decrease/slower processing compared to other methods of classifying. In other words, it does not build the model beforehand. It stores the data and makes predictions on demand. </span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>"Curse of Dimensionality" - Does not perform well with high dimensional data inputs. On a 2D xy graph it works fine but if we wanted to classify according to color, size, weight, etc. then data points become sparse in high dimensions and distance between points become too similar for KNN to find meaningful neighbors. This leads to "peaking phenomenon." </span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Peaking Phenomenon - After reaching optimal number of features, any more just increases noise and increases classification errors especially when the sample size is small. Feature selection and dimensionality reduction techniques can help minimize "curse of dimensionality" but we need to be careful. </span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Overfitting - Low k values can overfit data. High values tend to smooth out prediction values since average values over a greater are or neighborhood. </span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="fu">## Uses </span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>Use KNN for simple recommendation systems. Data free processing is most commonly used because it's helpful for data sets with missing values because it estimates values using process called missing data imputation. </span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>Used in finance like stock market forecasting, currency exchange rate, money laundering analysis. </span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>Also used in health care. For example, risk of heart attacks and prostate cancer by calculating most likely gene expression. </span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>In this paper we will apply the KNN algorithm to a data set of potential diabetic patients.  </span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="fu"># Method</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="fu"># Analysis and Results</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="fu"># Conclusion</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
