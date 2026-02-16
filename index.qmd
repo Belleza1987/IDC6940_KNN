@@ -26,21 +26,20 @@ indent: true
 
 The K-Nearest Neighbors (KNN) algorithm is one of the simplest and most intuitive supervised machine learning methods used for both classification (assigning a category) and regression (predicting a value). It requires two instances for it to achieve its goal: a distance metric and defining K. 
  
-## The Distance Metric
+The Distance Metric
  Measures the distance between the query points and other data points. The distance metric is calculated using Euclidean distance, Manhattan distance, or Minkowski distance. It's visualized using Voronezh diagrams. (Insert diagram)  
- 
-## Defining K 
+
 
 K defines how many neighbors will be checked to determine the classification of a query point. For example, K=1, it will be assigned to the same class as its single nearest neighbor. 
 Choosing K depends on the input data. For example, data with more outliers performs much better with higher k values. 
 We also want to choose an odd number for k to minimize the chances of ties in classification. 
 
-## Strengths 
+Strengths 
 - Easy to implement/learn. 
 - Few hyper parameters - distance and k value. 
 - Adapatable - Adjusts to new training data since all training data is stored into memory. Because of that, it doesn't scale well. As data set grows, algorithm becomes less efficient due to increasing computational complexity, compromising overall model performance. 
 
-## Weaknesses 
+Weaknesses 
 - KNN is a "lazy algorithm" - It stores all training data and defers the computation to the time of classification, increasing memory usage and decrease/slower processing compared to other methods of classifying. In other words, it does not build the model beforehand. It stores the data and makes predictions on demand. 
 
 - "Curse of Dimensionality" - Does not perform well with high dimensional data inputs. On a 2D xy graph it works fine but if we wanted to classify according to color, size, weight, etc. then data points become sparse in high dimensions and distance between points become too similar for KNN to find meaningful neighbors. This leads to "peaking phenomenon." 
@@ -49,7 +48,7 @@ We also want to choose an odd number for k to minimize the chances of ties in cl
 
 - Overfitting - Low k values can overfit data. High values tend to smooth out prediction values since average values over a greater are or neighborhood. 
 
-## Uses 
+Uses 
 Use KNN for simple recommendation systems. Data free processing is most commonly used because it's helpful for data sets with missing values because it estimates values using process called missing data imputation. 
 
 Used in finance like stock market forecasting, currency exchange rate, money laundering analysis. 
