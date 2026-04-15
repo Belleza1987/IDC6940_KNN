@@ -1,0 +1,18 @@
+project:
+  type: website
+
+website:
+  title: "K-Nearest Neighbors"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: paper.qmd
+        text: Capstone Paper
+      - href: slides.qmd
+        text: Presentation
+
+format:
+  html:
+    theme: cosmo
+    toc: true
