@@ -20,7 +20,8 @@ bibliography: references.bib
 indent: true
 ---
 
-[Presentation](link){.external target="_blank"}
+## Capstone Paper
+[Click here to read the full paper](paper.html)
 
 # Abstract
 
