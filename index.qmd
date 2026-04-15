@@ -16,6 +16,7 @@ format:
     number-sections: true
 course: IDC 6940 - Capstone Projects in Data Science
 bibliography: references.bib
+---
 indent: true
 ---
 
