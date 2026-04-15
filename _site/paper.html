@@ -7,11 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<<<<<<< HEAD
 <title>KNN Diabetes Prediction Capstone – K-Nearest Neighbors</title>
-=======
-<title>paper – K-Nearest Neighbors</title>
->>>>>>> 51f9099 (Save local changes)
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,7 +116,6 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<<<<<<< HEAD
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">KNN Diabetes Prediction Capstone</h1>
@@ -140,11 +135,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-=======
-
-
-
->>>>>>> 51f9099 (Save local changes)
 <p>Using the K-Nearest Neighbors Algorithm to Predict Diabetes Outcomes</p>
 <p>Jennifer Becerra IDC 6940 – Capstone Project<br>
 University of West Florida</p>
@@ -156,40 +146,17 @@ University of West Florida</p>
 <p>The K-Nearest Neighbors (KNN) algorithm is one of the simplest and most intuitive supervised machine learning methods used for both classification (assigning a category) and regression (predicting a value). It requires two key components: a distance metric and a defined value of K.</p>
 <p>The distance metric measures how far a query point is from other data points. Common distance metrics include Euclidean, Manhattan, and Minkowski distance. These distances determine which points are considered “neighbors” of the query point.</p>
 <p>The value of K determines how many neighbors are used to classify a new observation. For example, if K=1, the model assigns the class of the single nearest neighbor. Higher values of K help smooth out noise and reduce the impact of outliers, while lower values can lead to overfitting. Choosing an odd value for K is often recommended to avoid ties in classification.</p>
-<<<<<<< HEAD
 <p>Strengths of KNN:</p>
 <p>Easy to understand and implement, Minimal hyperparameters (distance metric and K value), Adaptable — stores all training data and updates predictions dynamically.</p>
 <p>Weaknesses of KNN:</p>
 <p>Lazy learner — no model is built ahead of time; all computation happens at prediction time. Computationally expensive for large datasets. Curse of dimensionality — performance declines as the number of features increases. Peaking phenomenon — after an optimal number of features, additional features increase noise and reduce accuracy.</p>
 <p>Applications of KNN KNN is used in:</p>
 <p>Recommendation systems. Missing data imputation Finance (stock forecasting, currency exchange, fraud detection). Healthcare (predicting heart attack risk, cancer diagnosis, gene expression analysis). In this paper, we apply the KNN algorithm to a dataset of potential diabetic patients to evaluate its effectiveness in medical prediction.</p>
-=======
-<p>Strengths of KNN Easy to understand and implement Minimal hyperparameters (distance metric and K value) Adaptable — stores all training data and updates predictions dynamically Weaknesses of KNN Lazy learner — no model is built ahead of time; all computation happens at prediction time Computationally expensive for large datasets Curse of dimensionality — performance declines as the number of features increases Peaking phenomenon — after an optimal number of features, additional features increase noise and reduce accuracy Applications of KNN KNN is used in:</p>
-<p>Recommendation systems</p>
-<p>Missing data imputation</p>
-<p>Finance (stock forecasting, currency exchange, fraud detection)</p>
-<p>Healthcare (predicting heart attack risk, cancer diagnosis, gene expression analysis)</p>
-<p>In this paper, we apply the KNN algorithm to a dataset of potential diabetic patients to evaluate its effectiveness in medical prediction.</p>
->>>>>>> 51f9099 (Save local changes)
 <ol start="2" type="1">
 <li>Methods</li>
 </ol>
 <p>Dataset</p>
-<<<<<<< HEAD
 <p>The Pima Indians Diabetes dataset contains 768 patient records with the following variables: Pregnancies, Glucose,Blood Pressure, Skin Thickness, Insulin, BMI, Diabetes Pedigree Function, Age, Outcome (0 = no diabetes, 1 = diabetes), and Preprocessing.</p>
-=======
-<p>The Pima Indians Diabetes dataset contains 768 patient records with the following variables:</p>
-<p>Pregnancies</p>
-<p>Glucose</p>
-<p>BloodPressure</p>
-<p>SkinThickness</p>
-<p>Insulin</p>
-<p>BMI</p>
-<p>DiabetesPedigreeFunction</p>
-<p>Age</p>
-<p>Outcome (0 = no diabetes, 1 = diabetes)</p>
-<p>Preprocessing</p>
->>>>>>> 51f9099 (Save local changes)
 <p>Several features contained zero values that were not physiologically possible (e.g., zero insulin). These were replaced with missing values and imputed using median imputation. All predictor variables were standardized using centering and scaling to ensure KNN performed correctly.</p>
 <p>Model Training and Evaluation</p>
 <p>The dataset was split into:</p>
