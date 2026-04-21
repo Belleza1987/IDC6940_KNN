@@ -1,117 +1,151 @@
 ---
-title: "Present a great story for data science projects"
-subtitle: "This is a Slide Template"
-author: "Students names (Advisor: Dr. Cohen)"
-date: '`r Sys.Date()`'
+title: "Using the K-Nearest Neighbors Algorithm to Predict Diabetes Outcomes"
+subtitle: "Capstone Presentation IDC6940 – University of West Florida"
+author: "Jennifer Becerra"
+course: "IDC 6940 – Capstone Projects in Data Science"
 format:
-  revealjs
-course: Capstone Projects in Data Science
-bibliography: references.bib # file contains bibtex for references
-#always_allow_html: true # this allows to get PDF with HTML features
+  revealjs:
+    theme: simple
+    slide-number: true
+    transition: fade
+    center: true
+    width: 1600
+    height: 900
+bibliography: references.bib
 self-contained: true
-execute: 
+execute:
   warning: false
   message: false
-editor: 
-  markdown: 
+editor:
+  markdown:
     wrap: 72
 ---
 
-::: callout-important
-**Remember:** Your goal is to make your audience understand and care
-about your findings. By crafting a compelling story, you can effectively
-communicate the value of your data science project.
+## Objective
 
-Carefully read this template since it has instructions and tips to
-writing!
+**Primary objective**  
+- Build and evaluate a K-Nearest Neighbors (KNN) classifier to predict diabetes onset using the Pima Indians dataset and compare KNN to baseline models (Xing 2020).
 
-More information about `revealjs`:
-<https://quarto.org/docs/reference/formats/presentations/revealjs.html>
-:::
+**Why this matters**  
+- Early identification of individuals at high risk for diabetes enables targeted screening, lifestyle interventions, and timely clinical follow-up, reducing complications and healthcare costs (Zhang 2022).
 
-## Introduction  {.smaller}
+**Specific aims**  
+- Preprocess clinical predictors (impute, standardize) while preserving the outcome variable.  
+- Tune K (1–25) with 10‑fold cross‑validation and report AUC, accuracy, sensitivity, specificity.  
+- Produce reproducible visuals and interpret model trade-offs for clinical screening.
 
--   Develop a storyline that captures attention and maintains interest.
+---
 
--   Your audience is your peers
+## Diabetes Background and Outcomes
 
--   Clearly state the problem or question you're addressing.
+### Clinical context
+- **Type 2 diabetes** is a progressive metabolic disorder characterized by insulin resistance and impaired insulin secretion.  
+- It increases risk for cardiovascular disease, kidney failure, neuropathy, and vision loss.  
+- Predictive models help identify high‑risk patients earlier than traditional screening alone (Nain 2023).
 
--   Introduce why it is relevant needs.
+### Outcomes of interest
+- **Primary outcome:** diabetes onset (No vs Yes).  
+- **Clinical implications:**
+  - **True positive:** early intervention → reduced long‑term complications.  
+  - **False negative:** missed high‑risk patient → delayed care.  
+  - **False positive:** unnecessary follow‑up testing → resource use + anxiety.  
+- **Goal:** maximize sensitivity for screening while maintaining reasonable specificity.
 
--   Provide an overview of your approach.
+---
 
-In kernel estimator, weight function is known as kernel function
-[@efr2008]. Cite this paper [@bro2014principal]. The GEE [@wang2014].
-The PCA [@daffertshofer2004pca]\*
+## Dataset Summary
+
+- **Source:** Pima Indians Diabetes dataset (768 records).  
+- **Predictors:** Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age.  
+- **Outcome:** Diabetes onset (0 = No, 1 = Yes).  
+- **Preprocessing:**  
+  - Replaced impossible zeros with NA  
+  - Median imputation  
+  - Standardized predictors  
+  - Outcome preserved unscaled  
+
+---
 
 ## Methods
 
--   Detail the models or algorithms used.
+### Modeling approach
+- 80/20 train/test split  
+- 10‑fold cross‑validation  
+- KNN tuned across k = 1–25 using ROC (Zhang 2018).  
+- Baselines: logistic regression, decision tree, random forest  
+- Metrics: **AUC**, accuracy, sensitivity, specificity, confusion matrix  
 
--   Justify your choices based on the problem and data.
+---
 
+## Pipeline Overview
 
+::: columns
+::: column
+![](visuals/workflow_diagram.svg){width=90%}
+:::
+::: column
+### Steps in the Modeling Pipeline
+- **Data Cleaning:** remove impossible values, handle missingness  
+- **Imputation:** median replacement for NA  
+- **Normalization:** center + scale predictors  
+- **Model Training:** tune KNN with 10‑fold CV  
+- **Evaluation:** AUC, accuracy, sensitivity/specificity  
+:::
+:::
 
-## Data Exploration and Visualization
+---
 
--   Describe your data sources and collection process.
+## Results
 
--   Present initial findings and insights through visualizations.
+### KNN Performance Summary
+- **Best k:** 23  
+- **Test AUC:** 0.852  
+- **Test accuracy:** 0.810  
 
--   Highlight unexpected patterns or anomalies.
+### Visual — Confusion Matrix
+![](visuals/confusion_matrix.png)
 
-## Data Exploration and Visualization {.smaller}
+---
 
-A study was conducted to determine how...
+## Confusion Matrix and Clinical Trade-offs
 
-```{r, warning=FALSE, echo=F, message=FALSE}
-# loading packages 
-library(tidyverse)
-library(knitr)
-library(ggthemes)
-library(ggrepel)
-library(dslabs)
-```
+![](visuals/confusion_matrix.png)
 
-```{r, warning=FALSE, echo=F}
-# Load Data
-#kable(head(murders))
+- **Interpretation:**  
+  - True positives → early intervention  
+  - False negatives → missed high‑risk patients  
+  - False positives → unnecessary follow‑up  
+  - True negatives → correct reassurance  
 
-ggplot1 = murders %>% ggplot(mapping = aes(x=population/10^6, y=total)) 
+---
 
-  ggplot1 + geom_point(aes(col=region), size = 4) +
-  geom_text_repel(aes(label=abb)) +
-  scale_x_log10() +
-  scale_y_log10() +
-  geom_smooth(formula = "y~x", method=lm,se = F)+
-  xlab("Populations in millions (log10 scale)") + 
-  ylab("Total number of murders (log10 scale)") +
-  ggtitle("US Gun Murders in 2010") +
-  scale_color_discrete(name = "Region")+
-      theme_bw()
-  
+## Feature Influence
 
-```
+![](visuals/feature_influence.png)
 
-## Modeling and Results
+- Standardized variability used as a proxy for influence  
+- Glucose, BMI, and Age show strong clinical relevance (Xing 2020)
 
--   Explain your data preprocessing and cleaning steps.
-
--   Present your key findings in a clear and concise manner.
-
--   Use visuals to support your claims.
-
--   **Tell a story about what the data reveals.**
-
-```{r}
-
-```
+---
 
 ## Conclusion
 
--   Summarize your key findings.
+- The KNN model demonstrated strong predictive ability for diabetes onset when predictors were properly cleaned and standardized, consistent with findings in prior medical ML research (Xing 2020).  
+- Glucose, BMI, and Age emerged as clinically meaningful contributors, aligning with established diabetes risk factors reported in the literature (Nain 2023).  
+- With an AUC of 0.852 and accuracy of 0.810, KNN performed competitively with more complex models, supporting evidence that simple algorithms can be effective for clinical screening tasks (Zhang 2022).  
+- These results highlight the potential of machine‑learning–based screening tools to identify high‑risk individuals earlier and support preventive healthcare decisions.  
+- Future work should explore threshold tuning for screening sensitivity, distance‑weighted KNN, and validation on broader patient populations.
 
--   Discuss the implications of your results.
+---
 
 ## References
+
+- Xing, Y., & Bei, Y. (2020). *Medical Health Big Data Classification Based on KNN Classification Algorithm*. IEEE Access.  
+- Zhang, X., Li, M., Zong, X., Zhu, X., & Wang, R. (2018). *Efficient kNN Classification With Different Numbers of Nearest Neighbors*. IEEE Transactions on Neural Networks and Learning Systems.  
+- Alkhatib, K., Najadat, H., Hmeidi, I., & Shatnawi, M. K. A. (2013). *Stock price prediction using k-nearest neighbor (kNN) algorithm*. International Journal of Business, Humanities and Technology, 3(3), 32–44.  
+- Nain, S., & Tomar, S. (2023). *Medical image prediction for diagnosis of breast cancer using machine learning*. AIP Conference Proceedings, 2853(1), 020140.  
+- Zhang, S. (2022). *Challenges in KNN Classification*. IEEE Transactions on Knowledge and Data Engineering, 34(10), 4663–4675.
+
+---
+
+## Questions?
