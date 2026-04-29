@@ -18,49 +18,49 @@
     "href": "paper.html#abstract",
     "title": "KNN Diabetes Prediction Capstone",
     "section": "Abstract",
-    "text": "Abstract\nThis project applies the K-Nearest Neighbors (KNN) machine learning algorithm to the Pima Indians Diabetes dataset to predict whether a patient is likely to have diabetes. After preprocessing, scaling, and tuning the hyperparameter k, KNN achieved an accuracy of 81.0% and an AUC of 0.775, matching the performance of the Random Forest model and outperforming Logistic Regression and Decision Tree models. These results demonstrate that KNN is a strong and interpretable model for medical classification tasks when data is properly prepared."
+    "text": "Abstract\nThis project applies the K-Nearest Neighbors (KNN) machine learning algorithm to the Pima Indians Diabetes dataset to predict whether a patient is likely to have diabetes. After preprocessing, scaling, and tuning the hyperparameter k, the final KNN model achieved a test AUC of 0.8601 and an accuracy of 0.7843, outperforming Logistic Regression and Decision Tree models and performing competitively with Random Forest. These results demonstrate that KNN is a strong and interpretable model for medical classification tasks when data is properly prepared."
   },
   {
     "objectID": "paper.html#introduction",
     "href": "paper.html#introduction",
     "title": "KNN Diabetes Prediction Capstone",
     "section": "1. Introduction",
-    "text": "1. Introduction\nThe K-Nearest Neighbors (KNN) algorithm is one of the simplest and most intuitive supervised machine learning methods used for both classification and regression. It requires two key components: a distance metric and a defined value of K.\nThe distance metric measures how far a query point is from other data points. Common distance metrics include Euclidean, Manhattan, and Minkowski distance. These distances determine which points are considered “neighbors” of the query point.\nThe value of K determines how many neighbors are used to classify a new observation. For example, if K=1, the model assigns the class of the single nearest neighbor. Higher values of K help smooth out noise and reduce the impact of outliers, while lower values can lead to overfitting. Choosing an odd value for K is often recommended to avoid ties in classification.\n\nStrengths of KNN\n\nEasy to understand and implement\n\nMinimal hyperparameters\n\nAdaptable — stores all training data and updates predictions dynamically\n\n\n\nWeaknesses of KNN\n\nLazy learner — no model is built ahead of time\n\nComputationally expensive for large datasets\n\nCurse of dimensionality\n\nPeaking phenomenon\n\n\n\nApplications of KNN\nKNN is used in: - Recommendation systems\n- Missing data imputation\n- Finance (stock forecasting, currency exchange, fraud detection)\n- Healthcare (predicting heart attack risk, cancer diagnosis, gene expression analysis)\nIn this paper, we apply the KNN algorithm to a dataset of potential diabetic patients to evaluate its effectiveness in medical prediction."
+    "text": "1. Introduction\nThe K-Nearest Neighbors (KNN) algorithm is one of the simplest and most intuitive supervised machine learning methods used for both classification and regression. It requires two key components: a distance metric and a defined value of K.\nThe distance metric measures how far a query point is from other data points. Common distance metrics include Euclidean, Manhattan, and Minkowski distance. These distances determine which points are considered “neighbors” of the query point.\nThe value of K determines how many neighbors are used to classify a new observation. Smaller values of K can lead to overfitting, while larger values may oversmooth the decision boundary. Choosing an appropriate K is therefore essential for model performance.\n\nStrengths of KNN\n\nEasy to understand and implement\n\nMinimal hyperparameters\n\nAdaptable — stores all training data and updates predictions dynamically\n\n\n\nWeaknesses of KNN\n\nLazy learner — no model is built ahead of time\n\nComputationally expensive for large datasets\n\nSensitive to feature scaling\n\nSusceptible to the peaking phenomenon\n\n\n\nApplications of KNN\nKNN is used in: - Recommendation systems\n- Missing data imputation\n- Finance (forecasting, anomaly detection)\n- Healthcare (risk prediction, diagnosis support)\nIn this paper, I apply the KNN algorithm to a dataset of potential diabetic patients to evaluate its effectiveness in medical prediction."
   },
   {
     "objectID": "paper.html#methods",
     "href": "paper.html#methods",
     "title": "KNN Diabetes Prediction Capstone",
     "section": "2. Methods",
-    "text": "2. Methods\n\nDataset\nThe Pima Indians Diabetes dataset contains 768 patient records with the following variables:\nPregnancies, Glucose, Blood Pressure, Skin Thickness, Insulin, BMI, Diabetes Pedigree Function, Age, Outcome (0 = no diabetes, 1 = diabetes)\n\n\nPreprocessing\nSeveral features contained zero values that were not physiologically possible (e.g., zero insulin). These were replaced with missing values and imputed using median imputation. All predictor variables were standardized using centering and scaling to ensure KNN performed correctly.\n\n\nModel Training and Evaluation\nThe dataset was split into: - 80% training\n- 20% testing\nModels evaluated: - K-Nearest Neighbors (KNN)\n- Logistic Regression\n- Decision Tree\n- Random Forest\nKNN was tuned across k = 1 to k = 25.\nThe optimal value was k = 23.\nPerformance metrics: - Accuracy\n- AUC\n- Confusion Matrix"
+    "text": "2. Methods\n\nDataset\nThe Pima Indians Diabetes dataset contains 768 patient records with the following variables:\nPregnancies, Glucose, Blood Pressure, Skin Thickness, Insulin, BMI, Diabetes Pedigree Function, Age, Outcome (0 = no diabetes, 1 = diabetes)\n\n\nPreprocessing\nSeveral features contained zero values that were not physiologically possible (e.g., zero insulin). These were replaced with missing values and imputed using median imputation. All predictor variables were standardized using centering and scaling to ensure KNN performed correctly, since distance-based models are highly sensitive to variable magnitude.\n\n\nModel Training and Evaluation\nThe dataset was split into: - 80% training\n- 20% testing\nModels evaluated: - K-Nearest Neighbors (KNN)\n- Logistic Regression\n- Decision Tree\n- Random Forest\nKNN was tuned across k = 1 to k = 25 using 10-fold cross-validation.\nPerformance metrics: - Accuracy\n- AUC\n- Confusion Matrix\n- Sensitivity and Specificity\n\n\nModel Development Process and Tuning Trials\nBefore arriving at the final KNN model, I went through several rounds of experimentation to understand how the algorithm behaved with this dataset. My first step was to build a simple baseline KNN model using the default settings in R. This gave me a starting point, but the accuracy and AUC were lower than expected, which confirmed that tuning the hyperparameter k would be necessary.\nI initially tested values of k from 1 to 25, which is a common range for datasets of this size. In my early trials, the tuning process suggested that k = 23 produced the best accuracy. At that point, however, my preprocessing pipeline was not fully finalized. I had replaced zero values with missing values, but I later realized that I needed to re-check the imputation and re-standardize the predictors to ensure that all variables contributed equally to the distance calculations.\nAfter improving the preprocessing steps — specifically re-running median imputation and re-scaling the predictors — I repeated the entire tuning process. With the updated pipeline, the performance curve shifted slightly, and k = 21 consistently produced the highest cross-validated AUC. This change made sense because KNN is extremely sensitive to scaling and distance calculations, so even small adjustments in preprocessing can influence which value of k performs best.\nTo make sure the tuning results were stable, I re-ran the cross-validation multiple times and checked whether the best k changed across runs. The performance plateaued between k = 19 and k = 23, which is typical when the model reaches a stable region. I ultimately selected k = 21 because it offered the best balance between sensitivity, specificity, and AUC, which is important for a clinical screening context.\nOnce the final KNN model was selected, I compared it to three baseline models — Logistic Regression, Decision Tree, and Random Forest — using the same 80/20 train/test split. This comparison helped confirm that KNN was not only performing well on its own but was also competitive with more complex models."
   },
   {
     "objectID": "paper.html#analysis-and-results",
     "href": "paper.html#analysis-and-results",
     "title": "KNN Diabetes Prediction Capstone",
     "section": "3. Analysis and Results",
-    "text": "3. Analysis and Results\n\nModel Performance\n\n\n\nModel\nAccuracy\nAUC\n\n\n\n\nKNN (k = 23)\n0.810\n0.775\n\n\nLogistic Regression\n0.804\n0.757\n\n\nDecision Tree\n0.758\n0.709\n\n\nRandom Forest\n0.810\n0.775\n\n\n\nKNN and Random Forest achieved the highest accuracy and AUC. Logistic Regression performed slightly lower but remained competitive. The Decision Tree model had the weakest performance."
+    "text": "3. Analysis and Results\n\nModel Performance\n\n\n\nModel\nAccuracy\nAUC\n\n\n\n\nKNN (k = 21)\n0.7843\n0.8601\n\n\nLogistic Regression\n0.804\n0.757\n\n\nDecision Tree\n0.758\n0.709\n\n\nRandom Forest\n0.810\n0.775\n\n\n\nKNN achieved the highest AUC and performed competitively with Random Forest in accuracy. Logistic Regression performed moderately well, while the Decision Tree model showed signs of overfitting.\n\n\nConfusion Matrix Interpretation\nThe KNN confusion matrix highlights clinically meaningful trade-offs:\n\nTrue positives: enable early intervention\n\nFalse negatives: risk delayed diagnosis\n\nFalse positives: may lead to unnecessary follow-up testing\n\nTrue negatives: avoid unnecessary clinical workup\n\nGiven the goal of screening, sensitivity is particularly important, and KNN provided a favorable balance between sensitivity and specificity."
   },
   {
     "objectID": "paper.html#discussion",
     "href": "paper.html#discussion",
     "title": "KNN Diabetes Prediction Capstone",
     "section": "4. Discussion",
-    "text": "4. Discussion\nThe results indicate that KNN is a strong model for predicting diabetes outcomes, performing equally well as the Random Forest model. This is notable because KNN is simpler and more interpretable than ensemble methods. Its performance suggests that the dataset’s structure is well-suited for distance-based classification.\nRandom Forest also performed strongly, consistent with its reputation for handling noisy medical data. Logistic Regression performed reasonably well, showing that linear relationships still contribute predictive value. The Decision Tree model underperformed, likely due to overfitting.\nOverall, the comparison demonstrates that KNN is a competitive and reliable model for this classification task, especially after tuning the value of k."
+    "text": "4. Discussion\nThe results demonstrate that KNN is a strong and interpretable model for predicting diabetes onset when predictors are properly cleaned and standardized. Its performance aligns with findings in prior medical machine-learning research, which emphasize the importance of preprocessing for distance-based algorithms.\nRandom Forest performed similarly in accuracy but with lower AUC, suggesting that KNN captured clinically relevant structure in the data more effectively. Logistic Regression remained competitive, indicating that linear relationships contribute predictive value. The Decision Tree model underperformed, likely due to its tendency to overfit small datasets.\nThe tuning process showed that larger values of k (around 20–25) produced more stable and generalizable predictions, reducing noise from outliers."
   },
   {
     "objectID": "paper.html#conclusion",
     "href": "paper.html#conclusion",
     "title": "KNN Diabetes Prediction Capstone",
-    "section": "5. Conclusion",
-    "text": "5. Conclusion\nThis project successfully applied the K-Nearest Neighbors algorithm to predict diabetes outcomes using the Pima Indians Diabetes dataset. After preprocessing and tuning, KNN achieved an accuracy of 81% and an AUC of 0.775, matching the performance of Random Forest and outperforming Logistic Regression and Decision Tree models.\nThese findings support the conclusion that KNN is an effective and interpretable model for medical classification problems. Future work could include testing additional distance metrics, applying cross-validation, or exploring advanced ensemble methods to further improve predictive performance."
+    "section": "7. Conclusion",
+    "text": "7. Conclusion\nThis project successfully applied the K-Nearest Neighbors algorithm to predict diabetes outcomes using the Pima Indians Diabetes dataset. After preprocessing and tuning, KNN achieved strong predictive performance, with an AUC of 0.8601 and accuracy of 0.7843, outperforming or matching more complex models.\nThese findings support the use of KNN as an effective and interpretable tool for clinical screening tasks. With further refinement and validation, KNN-based models could help identify high-risk individuals earlier and support preventive healthcare decisions."
   },
   {
     "objectID": "paper.html#references",
     "href": "paper.html#references",
     "title": "KNN Diabetes Prediction Capstone",
-    "section": "6. References",
-    "text": "6. References\nXing, Y., & Bei, Y. (2020). Medical Health Big Data Classification Based on KNN Classification Algorithm. IEEE Access.\nZhang, X., Li, M., Zong, X., Zhu, X., & Wang, R. (2018). Efficient kNN Classification With Different Numbers of Nearest Neighbors. IEEE Transactions on Neural Networks and Learning Systems.\nAlkhatib, K., Najadat, H., Hmeidi, I., & Shatnawi, M. K. A. (2013). Stock price prediction using k-nearest neighbor (kNN) algorithm. International Journal of Business, Humanities and Technology, 3(3), 32–44\nNain, S., & Tomar, S. (2023). Medical image prediction for diagnosis of breast cancer using machine learning. AIP Conference Proceedings, 2853(1), 020140.\nZhang, S. (2022). Challenges in KNN Classification. IEEE Transactions on Knowledge and Data Engineering, 34(10), 4663–4675."
+    "section": "8. References",
+    "text": "8. References\nXing, Y., & Bei, Y. (2020). Medical Health Big Data Classification Based on KNN Classification Algorithm. IEEE Access.\nZhang, X., Li, M., Zong, X., Zhu, X., & Wang, R. (2018). Efficient kNN Classification With Different Numbers of Nearest Neighbors. IEEE Transactions on Neural Networks and Learning Systems.\nAlkhatib, K., Najadat, H., Hmeidi, I., & Shatnawi, M. K. A. (2013). Stock price prediction using k-nearest neighbor (kNN) algorithm. International Journal of Business, Humanities and Technology, 3(3), 32–44\nNain, S., & Tomar, S. (2023). Medical image prediction for diagnosis of breast cancer using machine learning. AIP Conference Proceedings, 2853(1), 020140.\nZhang, S. (2022). Challenges in KNN Classification. IEEE Transactions on Knowledge and Data Engineering, 34(10), 4663–4675."
   },
   {
     "objectID": "index.html",
@@ -109,7 +109,7 @@
     "href": "slides.html#results",
     "title": "Using the K-Nearest Neighbors Algorithm to Predict Diabetes Outcomes",
     "section": "Results",
-    "text": "Results\nKNN Performance Summary\n\nBest k: 23\n\nTest AUC: 0.852\n\nTest accuracy: 0.810\n\nVisual — Confusion Matrix"
+    "text": "Results\nKNN Performance Summary\n\nBest k: 21\n\nTest AUC: 0.8601\n\nTest accuracy: 0.7843\n\nVisual — Confusion Matrix"
   },
   {
     "objectID": "slides.html#confusion-matrix-and-clinical-trade-offs",
@@ -145,5 +145,26 @@
     "title": "Using the K-Nearest Neighbors Algorithm to Predict Diabetes Outcomes",
     "section": "Questions?",
     "text": "Questions?"
+  },
+  {
+    "objectID": "slides.html#how-i-selected-k-21",
+    "href": "slides.html#how-i-selected-k-21",
+    "title": "Using the K-Nearest Neighbors Algorithm to Predict Diabetes Outcomes",
+    "section": "How I Selected k = 21",
+    "text": "How I Selected k = 21\nTuning Process\n\nTuned k = 1 to 25\nUsed 10‑fold cross‑validation\nEvaluated each k using AUC (ROC)\nk = 21 produced the highest cross‑validated AUC\nBalanced bias (small k) and variance (large k)\n\nVisual — Tuning Curve\nplot(knn_model, main = “KNN Tuning Curve (k = 1 to 25)”)"
+  },
+  {
+    "objectID": "paper.html#limitations",
+    "href": "paper.html#limitations",
+    "title": "KNN Diabetes Prediction Capstone",
+    "section": "5. Limitations",
+    "text": "5. Limitations\nAlthough the results are promising, several limitations should be acknowledged:\n\nThe dataset is relatively small (768 records), which may limit generalizability.\n\nAll patients are from a single population group (Pima Indian women), which restricts demographic diversity.\n\nKNN can be computationally expensive on larger datasets, though this was not an issue here.\n\nThe model relies heavily on preprocessing; small changes in scaling or imputation can shift performance.\n\nOnly a limited set of models was compared; more advanced methods (e.g., gradient boosting) were not explored."
+  },
+  {
+    "objectID": "paper.html#future-work",
+    "href": "paper.html#future-work",
+    "title": "KNN Diabetes Prediction Capstone",
+    "section": "6. Future Work",
+    "text": "6. Future Work\nFuture work could expand on this project in several ways:\n\nExplore additional distance metrics (Manhattan, Minkowski).\n\nImplement distance-weighted KNN to give closer neighbors more influence.\n\nPerform threshold tuning to maximize sensitivity for clinical screening.\n\nValidate the model on external datasets with more diverse populations.\n\nCompare KNN to more advanced models such as XGBoost or LightGBM.\n\nIncorporate feature selection or dimensionality reduction to improve efficiency."
   }
 ]
