@@ -98,14 +98,30 @@ editor:
 ## Results
 
 ### KNN Performance Summary
-- **Best k:** 23  
-- **Test AUC:** 0.852  
-- **Test accuracy:** 0.810  
+- **Best k:** 21  
+- **Test AUC:** 0.8601  
+- **Test accuracy:** 0.7843 
 
 ### Visual — Confusion Matrix
 ![](visuals/confusion_matrix.png)
 
 ---
+
+## How I Selected k = 21
+
+### Tuning Process
+- Tuned **k = 1 to 25**
+- Used **10‑fold cross‑validation**
+- Evaluated each k using **AUC (ROC)**
+- **k = 21** produced the highest cross‑validated AUC
+- Balanced bias (small k) and variance (large k)
+
+### Visual — Tuning Curve
+```{r}
+plot(knn_model, main = "KNN Tuning Curve (k = 1 to 25)")
+
+---
+
 
 ## Confusion Matrix and Clinical Trade-offs
 
