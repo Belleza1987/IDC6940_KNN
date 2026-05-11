@@ -116,7 +116,6 @@ corrplot(cor(numeric_vars), method = "color")
 # Modeling Approach
 
 The best value of k was 21, which provided the highest AUC during cross‑validation.
-  
 ```{r, echo=FALSE}
 ctrl <- trainControl(
   method = "cv",
