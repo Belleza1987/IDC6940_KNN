@@ -184,15 +184,19 @@ ggplot(cm_df, aes(x = Predicted, y = Actual, fill = Freq)) +
 ```
 
 # Discussion
+
 The results show that KNN can be an effective model for predicting diabetes when the data is properly preprocessed and the number of neighbors is carefully tuned. The strong AUC value suggests that the model is able to distinguish well between diabetic and non‑diabetic individuals. These findings are consistent with previous research showing that KNN performs well on medical classification tasks when distance‑based methods are appropriate (Alkhatib et al., 2013). The importance of preprocessing was also clear in this project. Without scaling and imputation, the model’s performance would have been significantly weaker, which aligns with recommendations in the literature (Zhang, 2022).
 
 # Limitations
+
 Although the model performed well, there are several limitations to consider. The dataset is relatively small and represents a specific population, which limits generalizability. KNN is also computationally expensive for larger datasets because it must compute distances for every prediction. Additionally, KNN does not provide direct insight into feature importance, which can make interpretation more challenging compared to models like logistic regression or decision trees.
 
 # Conclusion
+
 The findings from this project show that the K‑Nearest Neighbors algorithm can be a reliable approach for predicting diabetes risk when the data is carefully prepared and the tuning parameter is selected appropriately. With an accuracy of about 0.78 and an AUC of about 0.86, the model demonstrated strong overall performance and was able to separate diabetic and non‑diabetic cases effectively. Although KNN has limitations—such as sensitivity to scaling and higher computational cost—it remains a practical and interpretable method for classification tasks in healthcare settings. These results suggest that KNN can serve as a useful tool for supporting early diabetes risk assessment, especially when paired with thoughtful preprocessing and validation.
 
 # References
+
 Alkhatib, K., Najadat, H., Hmeidi, I., & Shatnawi, M. K. A. (2013). Stock price prediction using k‑nearest neighbor (kNN) algorithm. International Journal of Business, Humanities and Technology, 3(3), 32–44.
 
 Nain, S., & Tomar, S. (2023). Medical image prediction for diagnosis of breast cancer using machine learning. AIP Conference Proceedings, 2853(1), 020140.
