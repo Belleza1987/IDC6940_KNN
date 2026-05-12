@@ -115,7 +115,11 @@ corrplot(cor(numeric_vars), method = "color")
 
 # Modeling Approach
 
-The best value of k was 21, which provided the highest AUC during cross‑validation.
+The K‑Nearest Neighbors (KNN) algorithm was used for this project because it performs well on structured medical datasets and has been shown to be effective in similar health‑related prediction tasks (Xing & Bei, 2020). Before training the model, all numeric predictors were standardized so that each variable contributed equally to the distance calculations. This step is especially important in clinical datasets where measurements, such as glucose and BMI, exist on very different scales.
+
+To identify an appropriate value for k, I ran a tuning process using 10‑fold cross‑validation. Each candidate model was evaluated using the Area Under the ROC Curve (AUC), which provides a more reliable measure of discrimination than accuracy alone, especially in medical prediction settings (Nain & Tomar, 2023). I tested values of k from 1 through 25, and the results showed that k = 21 produced the highest average AUC across folds. This aligns with findings that slightly larger neighborhood sizes can help stabilize predictions in noisy or heterogeneous datasets (Zhang et al., 2018).
+
+After selecting k = 21, the final model was trained on the full training set and evaluated on the test set. Performance was assessed using AUC, accuracy, sensitivity, specificity, and the confusion matrix to understand how well the model identified both positive and negative cases. This approach ensured that the model was tuned systematically and grounded in established practices for predictive modeling in healthcare.
 ```{r, echo=FALSE}
 ctrl <- trainControl(
   method = "cv",
