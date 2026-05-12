@@ -72,7 +72,6 @@ Four models were trained for comparison: KNN, logistic regression, decision tree
 Model performance was evaluated using accuracy, AUC, the confusion matrix, sensitivity, and specificity. Sensitivity is particularly important in clinical screening because failing to identify true positive cases can delay diagnosis and treatment (Nain & Tomar, 2023). AUC was used as the primary metric because it reflects the model’s ability to distinguish between diabetic and non‑diabetic individuals across all classification thresholds.
 
 # Exploratory Data Analysis
-
 ```{r, echo=FALSE}
 # Basic summaries
 head(df_processed)

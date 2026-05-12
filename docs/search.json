@@ -124,12 +124,5 @@
     "title": "KNN Diabetes Prediction Capstone",
     "section": "3.5 Evaluation Metrics",
     "text": "3.5 Evaluation Metrics\nModel performance was evaluated using accuracy, AUC, the confusion matrix, sensitivity, and specificity. Sensitivity is particularly important in clinical screening because failing to identify true positive cases can delay diagnosis and treatment (Nain & Tomar, 2023). AUC was used as the primary metric because it reflects the model’s ability to distinguish between diabetic and non‑diabetic individuals across all classification thresholds."
-  },
-  {
-    "objectID": "slides.html",
-    "href": "slides.html",
-    "title": "Using the K-Nearest Neighbors Algorithm to Predict Diabetes Outcomes",
-    "section": "",
-    "text": "Primary objective\n- Build and evaluate a K-Nearest Neighbors (KNN) classifier to predict diabetes onset using the Pima Indians dataset and compare KNN to baseline models (Xing 2020).\nWhy this matters\n- Early identification of individuals at high risk for diabetes enables targeted screening, lifestyle interventions, and timely clinical follow-up, reducing complications and healthcare costs (Zhang 2022).\nSpecific aims\n- Preprocess clinical predictors (impute, standardize) while preserving the outcome variable.\n- Tune K (1–25) with 10‑fold cross‑validation and report AUC, accuracy, sensitivity, specificity.\n- Produce reproducible visuals and interpret model trade-offs for clinical screening."
   }
 ]
